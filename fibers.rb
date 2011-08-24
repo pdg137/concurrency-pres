@@ -1,17 +1,8 @@
-fiber1 = Fiber.new do
-  5.times { |x| puts "fiber 1: #{x}" }
-  Fiber.yield
-  5.times { |x| puts "fiber 1: #{x}" }
+twos = Fiber.new do
+   num = 2
+   loop do
+     Fiber.yield(num) unless num % 3 == 0
+     num += 2
+   end
 end
 
-fiber2 = Fiber.new do
-  5.times { |x| puts "fiber 2: #{x}" }
-  Fiber.yield
-  5.times { |x| puts "fiber 2: #{x}" }
-end
-
-
-fiber1.resume
-fiber1.resume
-fiber2.resume
-fiber2.resume
