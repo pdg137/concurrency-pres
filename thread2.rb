@@ -5,7 +5,6 @@ t1 = Time.now
 
 thread = Thread.new do
   10.times do |i|
-    #HardProblem.solve(i)
     Net::HTTP.new("www.rubygems.org").get("/")
   end
 end
